@@ -1,0 +1,34 @@
+//import { request } from 'express';
+import {fetch} from 'whatwg-fetch';
+import getBaseUrl from "./baseUrl";
+
+const baseUrl = getBaseUrl();
+
+export function getUsers() {
+  return get('users');
+}
+
+function get(url) {
+  console.log("baseUrl in get() " + url); /* eslint-disable-line no-console*/
+  return fetch(baseUrl + url).then(onSuccess, onError)
+}
+
+export function deleteUsers(id) {
+  return del(`users/${id}`);
+}
+
+function del(url) {
+  const request = new Request(baseUrl + url, {
+    method:'DELETE'
+  });
+
+  return fetch(request).then(onSuccess, onError)
+}
+
+function onSuccess(response) {
+  return response.json();
+}
+
+function onError(error) {
+  console.log(error); // eslint-disable-line no-console
+}
