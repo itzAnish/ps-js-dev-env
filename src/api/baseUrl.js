@@ -4,7 +4,7 @@ export default function getBaseUrl() {
   return inDevelopment ? "http://localhost:3001/" : "/";
   */
  console.log("getBaseUrl"); /* eslint-disable-line no-console*/
-  return getQueryStringParameterByName("useMockApi") ? "http://localhost:3001/" : "/";
+  return getQueryStringParameterByName("useMockApi") ? "http://localhost:3001/" : "https://limitless-savannah-50223.herokuapp.com/";
 }
 
 function getQueryStringParameterByName(name, url) {
